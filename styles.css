@@ -1,0 +1,116 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.form{
+  width: 50%;
+  height: 100vh;
+  background: #455a64;
+  float: left;
+  padding: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form--wrapper {
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.form--logo {
+  color: #ffffff;
+}
+
+.form--logo--img {
+  display: inline-block;
+  width: 55px;
+}
+
+.form--input {
+  display: block;
+  margin: 25px 0;
+  width: 100%;
+}
+
+.form--input--title {
+
+}
+
+.form--input--url {
+
+}
+
+.form--button {
+  display: block;
+  width: 100%;
+  background: #ffc107;
+  color: #ffffff;
+}
+
+.bookmarks {
+  width: 50%;
+  height: 100vh;
+  background: #cfd8dc;
+  float: left;
+  overflow-y: scroll;
+  padding: 20px;
+}
+
+.card {
+  background: #fff;
+  border: 2px solid #607d8b;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+}
+
+.card--title {
+  color: #455a64;
+  border-bottom: 1px solid #cfd8dc;
+  line-height: 2;
+}
+
+.card--link {
+  display: block;
+  color: #607d8b;
+  border-bottom: 1px solid #cfd8dc;
+  margin-bottom: 15px;
+  line-height: 3;
+}
+
+.card--link:hover {
+
+}
+
+.card--footer {
+
+}
+
+.card--read {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  border-bottom: 1px solid #444;
+  cursor: pointer;
+  color: red;
+}
+
+.card--footer--button {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  border-bottom: 1px solid #444;
+  cursor: pointer;
+  color: #455a64;
+}
+
+.card--delete {
+  float: right;
+}

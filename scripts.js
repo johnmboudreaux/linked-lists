@@ -1,9 +1,10 @@
 // (function() {
 
 var enterButton = $('#enterButton');
+var clearReadButton = ('#clearReadButton');
+var readButton= $('#card--read');
+var deleteButton = $('#card--delete');
 var bookMarks = $('#bookMarks');
-var readButton= $('.card--read');
-var deleteButton = $('.card--delete');
 var titleInput = $('#titleInput');
 var urlInput = $('#urlInput');
 
@@ -32,17 +33,25 @@ enterButton.on('click', function() {
   '</div>'
 );}});
 
-// marks bookmark as read and toggles read class
+// removes read bookmarks
+$('#clearReadButton').click(function(){
+    $('.button--read').remove();
+});
+
+
+// marks bookmark as read
 $(bookMarks).on('click', '#readButton', function(){
   $(this).parent().closest('#wholeCard', '#readButton').toggleClass('button--read');
-  $(this).parent('#wholeCard', '#readButton').toggleClass('button--read');
-$(this).css('color', 'red');
+    $(this).parent('#wholeCard', '#readButton').toggleClass('button--read');
+      $(this).css('color', 'red');
 });
 
 // deletes bookmark.  sets display to none.
 $(bookMarks).on('click', '#deleteButton', function(){
   $(this).parent().parent().addClass('delete--box');
 });
+
+// function deleteCard() {}
 
 
 

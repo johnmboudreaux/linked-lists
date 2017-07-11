@@ -62,6 +62,13 @@
   color: #ffffff;
 }
 
+.counter {
+  color: #ffffff;
+  font-size: 1.5em;
+  font-weight: 800;
+}
+
+
 .bookmarks {
   width: 50%;
   height: 100vh;

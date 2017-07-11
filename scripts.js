@@ -1,18 +1,26 @@
 // (function() {
 
 var enterButton = $('#enterButton');
-var bookMarks = $('#bookmarks');
+var bookMarks = $('#bookMarks');
 var readButton= $('.card--read');
 var deleteButton = $('.card--delete');
+var titleInput = $('#titleInput');
+var urlInput = $('#urlInput');
 
-//add the cards to the right side of the screen on enter button click
+$( "#titleInput" ).keyup(function() {
+  $("#enterButton").prop("disabled", !this.value);
+});
+
+$( "#urlInput" ).keyup(function() {
+  $("#enterButton").prop("disabled", !this.value);
+});
+
 enterButton.on('click', function() {
   if ($('.form--input--title').val() === "" || $('.form--input--title--url').val() === "") {
     alert("please complete both fields before submitting");
 } else {
   var titleInput = $('#titleInput');
   var urlInput = $('#urlInput');
-  console.log("one");
   $(bookMarks).prepend(
   '<div class="card" id="wholeCard">'+
     '<h2 class="card--title">' + titleInput.val() + '</h2>'+
@@ -36,17 +44,10 @@ $(bookMarks).on('click', '#deleteButton', function(){
   $(this).parent().parent().addClass('delete--box');
 });
 
-function enterButtonToggle(){
-  if ($('.form--input--title').val() !== "" || $('.form--input--title--url').val() !== "") {
-    console.log('did this work');
-    enableButton();
-    alert("please complete both fields before submitting");
-}
-}
 
-function enableButton() {
-  $('#enterButton').removeAttribute("disabled");
-}
+
+
+
 
 
 

@@ -47,10 +47,18 @@
 
 }
 
-.form--button {
+.form--button,
+.form--clear--button {
   display: block;
   width: 100%;
   background: #ffc107;
+  color: #ffffff;
+  margin: 25px 0;
+}
+
+.form--button:hover,
+.form--clear--button:hover {
+  background-color: #ffd773;
   color: #ffffff;
 }
 

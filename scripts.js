@@ -1,4 +1,3 @@
-// (function() {
 var enterButton = $('#enterButton');
 var clearReadButton = ('#clearReadButton');
 var readButton= $('#readButton');
@@ -25,9 +24,16 @@ $( "#urlInput" ).keyup(function() {
   )
 ;
 
+
+
 enterButton.on('click', function() {
+
+
   if ($('.form--input--title').val() === "" || $('.form--input--title--url').val() === "") {
     alert("please complete both fields before submitting");
+
+} else if (!isUrlValid()) {
+    alert('Please enter a vaild URL')
 
 } else {
   var titleInput = $('#titleInput');
@@ -45,6 +51,7 @@ enterButton.on('click', function() {
       '<button class="card--footer--button card--delete" id="deleteButton">Delete</button>'+
     '</div>'+
   '</div>'
+
           )
         ;
       }
@@ -52,7 +59,6 @@ enterButton.on('click', function() {
   )
 ;
 
-// clear read bookmarks button event listener
 $('#clearReadButton').click(function(){
   removeReadBookmarks();
     }
@@ -71,6 +77,7 @@ function removeReadBookmarks(){
 
 // marks bookmark as read
 $(bookMarks).on('click', '#readButton', function(){
+
   if (!$(this).hasClass('button--read')) {
     unreadCardCounter--;
     readCardCounter++;
@@ -108,5 +115,34 @@ $(bookMarks).on('click', '#deleteButton', function(){ {
 ;
 
 
+// URL Verifier
+function isUrlValid() {
+    var urlInput = $('#urlInput').val()
+    var regexQuery = "^(https?://)?(www\\.)?([-a-z0-9]{1,63}\\.)*?[a-z0-9][-a-z0-9]{0,61}[a-z0-9]\\.[a-z]{2,6}(/[-\\w@\\+\\.~#\\?&/=%]*)?$";
+    var url = new RegExp(regexQuery,"i");
+    if (url.test(urlInput)) {
+      return true;
+      console.log('that worked');
+    }  else {
+      return false;
+    };
 
-// }());
+  }
+
+  // function countLinks(){
+  //   return $('.bookmarks').length
+  // }
+  //
+  // function totalReadLinks() {
+  //   return $('.button--read').length
+  // }
+  //
+  // function unreadLinks() {
+  //   return $('#unreadCards').length
+  // }
+  //
+  // function countAll () {
+  //   $('#totalCards').text('Number of Links: ' + countLinks());
+  //   $('#readCards').text('Number of Read Links: ' + totalReadLinks());
+  //   $('#unreadCards').text('Number of Unread Links: ' + unreadLinks());
+  // }

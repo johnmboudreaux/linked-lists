@@ -142,6 +142,11 @@
   background-color: #f2f4f4;
 }
 
+.button--gone{
+  display: none;
+}
+
+
 .delete--box {
   display: none;
 }

@@ -24,17 +24,14 @@ $( "#urlInput" ).keyup(function() {
   )
 ;
 
-
-
+// enter button listner checks for empty field, alerts if
+// they are. chacks for valid url alerts if invalid else
+// creates a card with  title and url
 enterButton.on('click', function() {
-
-
-  if ($('.form--input--title').val() === "" || $('.form--input--title--url').val() === "") {
-    alert("please complete both fields before submitting");
-
+if ($('.form--input--title').val() === "" || $('.form--input--title--url').val() === "") {
+  alert("please complete both fields before submitting");
 } else if (!isUrlValid()) {
-    alert('Please enter a vaild URL')
-
+  alert('Please enter a vaild URL');
 } else {
   var titleInput = $('#titleInput');
   var urlInput = $('#urlInput');
@@ -45,13 +42,12 @@ enterButton.on('click', function() {
   $(bookMarks).prepend(
   '<div class="card" id="wholeCard">'+
     '<h2 class="card--title">' + titleInput.val() + '</h2>'+
-    '<a href="' + urlInput.val() + '" class="card--link">' + urlInput.val() + '</a>'+
+    '<a href="' + urlInput.val() + '" class="card--link" target="_blank">' + urlInput.val() + '</a>'+
     '<div class="card--footer">'+
       '<button class="card--footer--button card--read" id="readButton">Mark As Read</button>'+
       '<button class="card--footer--button card--delete" id="deleteButton">Delete</button>'+
     '</div>'+
   '</div>'
-
           )
         ;
       }
@@ -65,7 +61,7 @@ $('#clearReadButton').click(function(){
   )
 ;
 
-// removes read bookmarks
+
 function removeReadBookmarks(){
   var cardsRemoved = $('.card--background--toggle').length;
   $('.card--background--toggle').remove();
@@ -77,7 +73,6 @@ function removeReadBookmarks(){
 
 // marks bookmark as read
 $(bookMarks).on('click', '#readButton', function(){
-
   if (!$(this).hasClass('button--read')) {
     unreadCardCounter--;
     readCardCounter++;
@@ -95,54 +90,33 @@ $(bookMarks).on('click', '#readButton', function(){
   )
 ;
 
-// deletes bookmark.  sets display to none.
+// deletes bookmark button
 $(bookMarks).on('click', '#deleteButton', function(){ {
   var readBtn = $(this).parent().children('.card--read');
   if (readBtn.hasClass('button--read')) {
     readCardCounter--;
 }else {
     unreadCardCounter--;
-  }
+}
 
 
-      cardCounter--;
-      $('#totalCards').html('Card Count: ' + cardCounter);
-      $('#readCards').html('Read Cards: ' + readCardCounter);
-      $('#unreadCards').html('Unread Card Count: ' + unreadCardCounter);
-      $(this).parent().parent().remove();
-    }}
+cardCounter--;
+$('#totalCards').html('Card Count: ' + cardCounter);
+$('#readCards').html('Read Cards: ' + readCardCounter);
+$('#unreadCards').html('Unread Card Count: ' + unreadCardCounter);
+$(this).parent().parent().remove();
+      }
+    }
   )
 ;
 
-
-// URL Verifier
 function isUrlValid() {
-    var urlInput = $('#urlInput').val()
+    var urlInput = $('#urlInput').val();
     var regexQuery = "^(https?://)?(www\\.)?([-a-z0-9]{1,63}\\.)*?[a-z0-9][-a-z0-9]{0,61}[a-z0-9]\\.[a-z]{2,6}(/[-\\w@\\+\\.~#\\?&/=%]*)?$";
     var url = new RegExp(regexQuery,"i");
     if (url.test(urlInput)) {
       return true;
-      console.log('that worked');
     }  else {
       return false;
-    };
-
   }
-
-  // function countLinks(){
-  //   return $('.bookmarks').length
-  // }
-  //
-  // function totalReadLinks() {
-  //   return $('.button--read').length
-  // }
-  //
-  // function unreadLinks() {
-  //   return $('#unreadCards').length
-  // }
-  //
-  // function countAll () {
-  //   $('#totalCards').text('Number of Links: ' + countLinks());
-  //   $('#readCards').text('Number of Read Links: ' + totalReadLinks());
-  //   $('#unreadCards').text('Number of Unread Links: ' + unreadLinks());
-  // }
+}

@@ -39,14 +39,6 @@
 
 }
 
-.form--input--title {
-
-}
-
-.form--input--title--url {
-
-}
-
 .form--button,
 .form--clear--button {
   display: block;
@@ -67,7 +59,6 @@
   font-size: 1.5em;
   font-weight: 800;
 }
-
 
 .bookmarks {
   width: 50%;
@@ -95,6 +86,7 @@
   color: #455a64;
   border-bottom: 1px solid #cfd8dc;
   line-height: 2;
+  font-weight:800;
 }
 
 .card--link {
@@ -108,11 +100,9 @@
 }
 
 .card--link:hover {
-
-}
-
-.card--footer {
-
+  color: #455a64;
+  text-decoration-color: #ffc107;
+  font-weight: bold;
 }
 
 .card--read {
@@ -122,8 +112,10 @@
   font: inherit;
   border-bottom: 1px solid #444;
   cursor: pointer;
-  /*check this color*/
-  /*color: red;*/
+}
+
+.card--read:hover {
+  color: #455a64;
 }
 
 .card--footer--button {
@@ -136,12 +128,19 @@
   color: #455a64;
 }
 
+.card--footer--button:hover {
+  color: #455a64;
+  text-decoration: underline;
+  border-bottom-color: #ffc107;
+  font-weight: bold;
+}
+
 .card--delete {
   float: right;
 }
 
 .button--read {
-  color: red;
+  color: #f05a28;
   }
 
 .card--background--toggle {

@@ -15,18 +15,14 @@ var unreadCardCounter = 0;
 $( "#titleInput" ).keyup(function() {
   $("#enterButton").prop("disabled", !this.value);
     }
-  )
-;
+  );
 
 $( "#urlInput" ).keyup(function() {
   $("#enterButton").prop("disabled", !this.value);
     }
-)
-;
+);
 
-// enter button listner checks for empty field, alerts if
-// they are. chacks for valid url alerts if invalid else
-// creates a card with  title and url
+
 enterButton.on('click', function() {
 if ($('.form--input--title').val() === "" || $('.form--input--title--url').val() === "") {
   alert("please complete both fields before submitting");
@@ -48,18 +44,14 @@ if ($('.form--input--title').val() === "" || $('.form--input--title--url').val()
       '<button class="card--footer--button card--delete" id="deleteButton">Delete</button>'+
     '</div>'+
   '</div>'
-          )
-        ;
+          );
       }
-    }
-  )
-;
+    });
 
 $('#clearReadButton').click(function(){
   removeReadBookmarks();
     }
-  )
-;
+  );
 
 
 function removeReadBookmarks(){
@@ -71,7 +63,7 @@ function removeReadBookmarks(){
     $('#totalCards').html('Card Count: ' + cardCounter);
 }
 
-// marks bookmark as read
+
 $(bookMarks).on('click', '#readButton', function(){
   if (!$(this).hasClass('button--read')) {
     unreadCardCounter--;
@@ -87,8 +79,7 @@ $(bookMarks).on('click', '#readButton', function(){
     $('#readCards').html('Read Cards: ' + readCardCounter);
     $('#unreadCards').html('Unread Card Count: ' + unreadCardCounter);
     }
-  )
-;
+  );
 
 // deletes bookmark button
 $(bookMarks).on('click', '#deleteButton', function(){ {
@@ -106,9 +97,7 @@ $('#readCards').html('Read Cards: ' + readCardCounter);
 $('#unreadCards').html('Unread Card Count: ' + unreadCardCounter);
 $(this).parent().parent().remove();
       }
-    }
-  )
-;
+    });
 
 function isUrlValid() {
     var urlInput = $('#urlInput').val();

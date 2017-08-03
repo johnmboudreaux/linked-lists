@@ -21,7 +21,7 @@ $( "#titleInput" ).keyup(function() {
 $( "#urlInput" ).keyup(function() {
   $("#enterButton").prop("disabled", !this.value);
     }
-  )
+)
 ;
 
 // enter button listner checks for empty field, alerts if

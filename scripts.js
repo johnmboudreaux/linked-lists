@@ -25,15 +25,7 @@ function isUrlValid() {
   }
 }
 
-// enter button listner checks for empty field, alerts if
-// they are. chacks for valid url alerts if invalid else
-// creates a card with  title and url
-$('#enterButton').on('click', function() {
-if ($('.form--input--title').val() === "" || $('.form--input--title--url').val() === "") {
-  alert("please complete both fields before submitting");
-} else if (!isUrlValid()) {
-  alert('Please enter a vaild URL');
-} else {
+function build() {
   var titleInput = $('#titleInput');
   var urlInput = $('#urlInput');
   cardCounter++;
@@ -48,6 +40,15 @@ if ($('.form--input--title').val() === "" || $('.form--input--title--url').val()
       '<button class="card--footer--button card--delete" id="deleteButton">Delete</button>'+
     '</div>'+
   '</div>');
+}
+
+$('#enterButton').on('click', function() {
+if ($('.form--input--title').val() === "" || $('.form--input--title--url').val() === "") {
+  alert("please complete both fields before submitting");
+} else if (!isUrlValid()) {
+  alert('Please enter a vaild URL');
+} else {
+  build();
     }
   }
 );

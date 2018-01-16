@@ -1,18 +1,29 @@
-var titleInput = $('#titleInput');
-var urlInput = $('#urlInput');
 var readCardCounter = 0;
 var cardCounter = 0;
 var unreadCardCounter = 0;
 
-$( "#titleInput" ).keyup(function() {
+function checkForTitle() {
   $("#enterButton").prop("disabled", !this.value);
-  }
-);
+}
 
-$( "#urlInput" ).keyup(function() {
+$( "#titleInput" ).on('keyup', checkForTitle);
+
+function checkForUrl() {
   $("#enterButton").prop("disabled", !this.value);
+}
+
+$( "#urlInput" ).on('keyup', checkForUrl);
+
+function isUrlValid() {
+    var urlInput = $('#urlInput').val();
+    var regexQuery = "^(https?://)?(www\\.)?([-a-z0-9]{1,63}\\.)*?[a-z0-9][-a-z0-9]{0,61}[a-z0-9]\\.[a-z]{2,6}(/[-\\w@\\+\\.~#\\?&/=%]*)?$";
+    var url = new RegExp(regexQuery,"i");
+    if (url.test(urlInput)) {
+      return true;
+    }  else {
+      return false;
   }
-);
+}
 
 // enter button listner checks for empty field, alerts if
 // they are. chacks for valid url alerts if invalid else
@@ -27,18 +38,16 @@ if ($('.form--input--title').val() === "" || $('.form--input--title--url').val()
   var urlInput = $('#urlInput');
   cardCounter++;
   unreadCardCounter++;
-  $('#totalCards').html('Card Count: ' + cardCounter);
-  $('#unreadCards').html('Unread Card Count: ' + unreadCardCounter);
-  $('#bookMarks').prepend(
-  '<div class="card" id="wholeCard">'+
+  $('#totalCards').html(`Card Count: ${cardCounter}`);
+  $('#unreadCards').html(`Unread Card Count: ${unreadCardCounter}`);
+  $('#bookMarks').prepend('<div class="card" id="wholeCard">'+
     '<h2 class="card--title">' + titleInput.val() + '</h2>'+
     '<a href="' + urlInput.val() + '" class="card--link" target="_blank">' + urlInput.val() + '</a>'+
     '<div class="card--footer">'+
       '<button class="card--footer--button card--read" id="readButton">Mark As Read</button>'+
       '<button class="card--footer--button card--delete" id="deleteButton">Delete</button>'+
     '</div>'+
-  '</div>'
-      );
+  '</div>');
     }
   }
 );
@@ -48,8 +57,8 @@ function removeReadBookmarks(){
   $('.card--background--toggle').remove();
     readCardCounter = 0;
     cardCounter = cardCounter - cardsRemoved;
-    $('#readCards').html('Read Cards: ' + readCardCounter);
-    $('#totalCards').html('Card Count: ' + cardCounter);
+    $('#readCards').html(`Read Cards: ${readCardCounter}`);
+    $('#totalCards').html(`Card Count: ${cardCounter}`);
 }
 
 $('#clearReadButton').on('click', removeReadBookmarks);
@@ -72,9 +81,6 @@ $('#bookMarks').on('click', '#readButton', function(){
   }
 );
 
-// deletes bookmark button
-$('#bookMarks').on('click', '#deleteButton', deleteBookmark);
-
 function deleteBookmark() {
   var readBtn = $(this).parent().children('.card--read');
   if (readBtn.hasClass('button--read')) {
@@ -90,13 +96,4 @@ function deleteBookmark() {
   $(this).parent().parent().remove();
 }
 
-function isUrlValid() {
-    var urlInput = $('#urlInput').val();
-    var regexQuery = "^(https?://)?(www\\.)?([-a-z0-9]{1,63}\\.)*?[a-z0-9][-a-z0-9]{0,61}[a-z0-9]\\.[a-z]{2,6}(/[-\\w@\\+\\.~#\\?&/=%]*)?$";
-    var url = new RegExp(regexQuery,"i");
-    if (url.test(urlInput)) {
-      return true;
-    }  else {
-      return false;
-  }
-}
+$('#bookMarks').on('click', '#deleteButton', deleteBookmark);

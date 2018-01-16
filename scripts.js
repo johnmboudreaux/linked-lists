@@ -15,11 +15,15 @@ function checkForUrl() {
 $( "#urlInput" ).on('keyup', checkForUrl);
 
 function isUrlValid() {
-    var urlInput = $('#urlInput').val();
-    var regexQuery = "^(https?://)?(www\\.)?([-a-z0-9]{1,63}\\.)*?[a-z0-9][-a-z0-9]{0,61}[a-z0-9]\\.[a-z]{2,6}(/[-\\w@\\+\\.~#\\?&/=%]*)?$";
-    var url = new RegExp(regexQuery,"i");
-    
-    url.test(urlInput) ? true : false;
+  var urlInput = $('#urlInput').val();
+  var regexQuery = "^(https?://)?(www\\.)?([-a-z0-9]{1,63}\\.)*?[a-z0-9][-a-z0-9]{0,61}[a-z0-9]\\.[a-z]{2,6}(/[-\\w@\\+\\.~#\\?&/=%]*)?$";
+  var url = new RegExp(regexQuery,"i");
+
+  if (url.test(urlInput)) {
+    return true;
+  }  else {
+    return false;
+  }
 }
 
 function build() {
@@ -81,11 +85,8 @@ $('#bookMarks').on('click', '#readButton', function(){
 
 function deleteBookmark() {
   var readBtn = $(this).parent().children('.card--read');
-  if (readBtn.hasClass('button--read')) {
-    readCardCounter--;
-  }else {
-      unreadCardCounter--;
-  }
+
+  readBtn.hasClass('button--read') ? readCardCounter-- : unreadCardCounter--
 
   cardCounter--;
   $('#totalCards').html(`Card Count: ${cardCounter}`);

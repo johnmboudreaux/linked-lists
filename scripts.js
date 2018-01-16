@@ -73,21 +73,22 @@ $('#bookMarks').on('click', '#readButton', function(){
 );
 
 // deletes bookmark button
-$('#bookMarks').on('click', '#deleteButton', function() {
+$('#bookMarks').on('click', '#deleteButton', deleteBookmark);
+
+function deleteBookmark() {
   var readBtn = $(this).parent().children('.card--read');
   if (readBtn.hasClass('button--read')) {
     readCardCounter--;
-}else {
-    unreadCardCounter--;
-}
+  }else {
+      unreadCardCounter--;
+  }
 
-cardCounter--;
-$('#totalCards').html(`Card Count: ${cardCounter}`);
-$('#readCards').html(`Read Cards: ${readCardCounter}`);
-$('#unreadCards').html(`Unread Card Count: ${unreadCardCounter}`);
-$(this).parent().parent().remove();
-    }
-);
+  cardCounter--;
+  $('#totalCards').html(`Card Count: ${cardCounter}`);
+  $('#readCards').html(`Read Cards: ${readCardCounter}`);
+  $('#unreadCards').html(`Unread Card Count: ${unreadCardCounter}`);
+  $(this).parent().parent().remove();
+}
 
 function isUrlValid() {
     var urlInput = $('#urlInput').val();
